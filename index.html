@@ -1,60 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Input Search Box</title>
-    <style>
-        body {
-            display: flex;
-            height: 100vh;
-            justify-content: center;
-            align-items: center;
-            font-family: Arial, sans-serif;
-            background: #f5f5f5;
-        }
-
-        form {
-            display: flex;
-            width: 400px;
-        }
-
-        input[type="text"] {
-            flex: 1;
-            padding: 12px;
-            font-size: 16px;
-            border: 2px solid #ccc;
-            border-radius: 5px 0 0 5px;
-            outline: none;
-        }
-
-        button {
-            padding: 12px 20px;
-            font-size: 16px;
-            border: none;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
-            border-radius: 0 5px 5px 0;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Input Search Box</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    form {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"] {
+      width: 250px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Formspree form -->
-    <form action="https://formspree.io/f/XXXXXXXX" method="POST">
-        <input 
-            type="text" 
-            name="search_query" 
-            placeholder="Search here..." 
-            required
-        >
-        <button type="submit">Search</button>
-    </form>
+  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input 
+      type="text" 
+      name="search_query" 
+      placeholder="Type something..." 
+      required
+    >
+    <button type="submit">Submit</button>
+  </form>
 
 </body>
 </html>
-
+  
