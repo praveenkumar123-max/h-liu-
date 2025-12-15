@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Input Search Box</title>
+  <title>Input Search Box (With Replacement)</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -12,37 +13,74 @@
       align-items: center;
       height: 100vh;
     }
-    form {
+
+    #container {
       background: white;
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
     }
-    input[type="text"] {
-      width: 250px;
+
+    input {
       padding: 10px;
+      width: 250px;
       font-size: 16px;
     }
+
     button {
       padding: 10px 15px;
-      font-size: 16px;
       margin-left: 10px;
+      font-size: 16px;
       cursor: pointer;
     }
   </style>
 </head>
+
 <body>
 
-  <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-    <input 
-      type="text" 
-      name="search_query" 
-      placeholder="Type something..." 
-      required
-    >
+<div id="container">
+  <h2>Search Box</h2>
+
+  <form id="searchForm">
+    <input type="text" id="searchInput" placeholder="Type something..." required>
     <button type="submit">Submit</button>
   </form>
 
+  <div id="result"></div>
+</div>
+
+<script>
+  const form = document.getElementById("searchForm");
+  const resultDiv = document.getElementById("result");
+
+  form.addEventListener("submit", function(e) {
+    e.preventDefault(); // stop page reload
+
+    const userInput = document.getElementById("searchInput").value;
+
+    fetch("https://formspree.io/f/YOUR_FORM_ID", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        search_query: userInput
+      })
+    }).then(() => {
+      // REPLACEMENT happens here
+      resultDiv.innerHTML = `
+        <h3>You entered:</h3>
+        <p><strong>${userInput}</strong></p>
+      `;
+      form.reset();
+    }).catch(() => {
+      resultDiv.innerHTML = "Error submitting data.";
+    });
+  });
+</script>
+
 </body>
 </html>
+
   
